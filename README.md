@@ -1,7 +1,7 @@
 # ESP32 Raw IR Transmitter
 
 ## Overview
-This project is a **library-less** IR schedule control system designed for the **ESP32**. It allows users to transmit infrared signals based on a preconfigured schedule. The code utilizes **38kHz infrared signals** and supports **custom scheduling**.
+This project is a **library-less** IR scheduled transmission arduino code designed for the **ESP32**. It allows users to transmit infrared signals based on a preconfigured schedule. The code utilizes **38kHz infrared signals** and supports **custom scheduling**.
 
 ## Features
 - **Fully compatible with ESP32**
