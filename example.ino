@@ -102,31 +102,21 @@ const uint16_t IR_2[] PROGMEM = {
 
 //DRY 28 ION
 const uint16_t IR_3[] PROGMEM = {
-  4417, 4372, 555, 1595, 556, 520, 555, 1595, 556, 1595, 556, 519,
-  556, 519, 556, 1595, 556, 520, 555, 519, 556, 1594, 557, 519,
-  556, 519, 556, 1595, 556, 1595, 556, 520, 555, 1595, 556, 519,
-  556, 519, 557, 519, 556, 1594, 557, 1595, 556, 1595, 556, 1596,
-  554, 1595, 556, 1593, 558, 1595, 556, 1594, 557, 520, 555, 519,
-  556, 519, 556, 520, 555, 519, 556, 1594, 557, 519, 556, 519,
-  557, 519, 556, 520, 555, 1595, 556, 519, 556, 518, 557, 519,
-  557, 1595, 555, 1595, 556, 1595, 556, 1594, 557, 519, 556, 1596,
-  555, 1594, 557, 5190, 4417, 4372, 555, 1595, 556, 520, 555, 1595,
-  556, 1596, 555, 520, 555, 519, 556, 1595, 556, 519, 556, 518,
-  557, 1596, 555, 519, 556, 519, 556, 1595, 556, 1595, 556, 519,
-  556, 1596, 555, 520, 555, 519, 556, 519, 557, 1595, 556, 1595,
-  556, 1596, 555, 1595, 556, 1596, 555, 1595, 556, 1596, 555, 518,
-  557, 520, 555, 520, 555, 520, 556, 518, 557, 1595, 556, 518,
-  557, 519, 557, 519, 556, 519, 556, 1595, 556, 519, 556, 519,
-  556, 520, 555, 1596, 555, 1595, 556, 1595, 556, 1594, 557, 520,
-  555, 1595, 556, 1595, 556, 5190, 4417, 4372, 555, 1596, 555, 1594,
-  557, 519, 556, 1596, 555, 518, 557, 1595, 556, 520, 555, 1595,
-  556, 520, 555, 1596, 555, 1595, 556, 519, 556, 519, 556, 1595,
-  556, 519, 556, 1596, 555, 519, 556, 519, 556, 520, 555, 520,
-  555, 520, 555, 519, 556, 520, 555, 519, 556, 519, 556, 520,
-  555, 520, 555, 519, 556, 519, 556, 520, 555, 520, 555, 519,
-  556, 520, 555, 519, 556, 519, 556, 519, 556, 519, 556, 519,
-  556, 519, 556, 520, 555, 519, 556, 1596, 555, 1595, 556, 1595,
-  556, 520, 556, 1595, 556, 520, 555
+  4417, 4370, 557, 1594, 557, 517, 558, 1593, 558, 1594, 557, 1594,
+  557, 519, 556, 517, 558, 1593, 558, 519, 556, 1595, 556, 518, 557, 519,
+  556, 518, 557, 1594, 557, 1594, 557, 517, 558, 1595, 556, 1594, 557, 1593,
+  558, 1592, 559, 520, 555, 1594, 557, 518, 557, 1593, 558, 518, 557, 518,
+  557, 519, 556, 518, 557, 1592, 559, 517, 558, 1594, 557, 518, 557, 518,
+  557, 1593, 558, 520, 555, 518, 557, 517, 558, 517, 558, 519, 556, 1595,
+  556, 1596, 555, 517, 558, 1594, 557, 1595, 556, 1594, 557, 1594, 557, 1595,
+  556, 519, 556, 5188, 4419, 4369, 557, 1593, 558, 520, 555, 1596, 555, 1594,
+  557, 1593, 558, 518, 557, 518, 557, 1593, 558, 517, 558, 1593, 558, 517,
+  558, 518, 557, 518, 557, 1593, 558, 1593, 558, 517, 558, 1594, 557, 1595,
+  556, 1595, 556, 1595, 556, 517, 558, 1594, 557, 519, 556, 1594, 557, 518,
+  557, 518, 557, 519, 556, 519, 556, 1594, 557, 519, 556, 1594, 557, 517,
+  558, 520, 555, 1596, 555, 519, 556, 519, 556, 518, 557, 517, 558, 517,
+  558, 1593, 558, 1594, 557, 520, 555, 1594, 557, 1593, 558, 1593, 558, 1593,
+  558, 1595, 556, 517, 558
 };
 
 
@@ -221,11 +211,22 @@ TemperatureCommand tempCommands[] = {
   {6, IR_6, sizeof(IR_6) / sizeof(IR_6[0])}  // 6 CLEAN
 };
 
+// Add descriptions for each temperature command (same order as tempCommands)
+const char* tempDescriptions[] = {
+  "OFF",
+  "28 ECO ION",
+  "LED OFF",
+  "DRY 28 ION",
+  "28 ION",
+  "28 SLEEP",
+  "CLEAN"
+};
+
 // Define your schedules (24-hour format)
 Schedule schedules[] = {
   {7, 20, 0},  // 7:20 AM → OFF
   {15, 45, 3}, // 3:45 PM → 28°C ION DRY
-  {16, 30, 0},   // 4:10 PM → OFF
+  {16, 15, 0},   // 4:15 PM → OFF
   {21, 30, 2},   // 9:30 PM → LEDOFF
   {1, 30, 6}   // 1:30 AM → CLEAN
 };
@@ -287,6 +288,35 @@ void serialTimeSetup() {
       Serial.printf("Current Time: %02d:%02d:%02d\n",
                     now.hour(), now.minute(), now.second());
     }
+    else if (input.startsWith("SEND ")) {
+      int tempToSend = input.substring(5).toInt();
+      bool commandFound = false;
+      for (int i = 0; i < sizeof(tempCommands)/sizeof(tempCommands[0]); i++) {
+        if (tempCommands[i].temp == tempToSend) {
+          sendIRCommand(tempCommands[i]);
+          Serial.printf("Sent command: Temp %d (%s)\n", tempToSend, tempDescriptions[i]);
+          commandFound = true;
+          break;
+        }
+      }
+      if (!commandFound) {
+        Serial.println("Error: Temperature command not found. Use 'LIST' to see available commands.");
+      }
+    }
+    else if (input == "LIST") {
+      Serial.println("Available temperature commands:");
+      for (int i = 0; i < sizeof(tempCommands)/sizeof(tempCommands[0]); i++) {
+        Serial.printf("Temp %d: %s\n", tempCommands[i].temp, tempDescriptions[i]);
+      }
+    }
+    else if (input == "HELP") {
+      Serial.println("Available commands:");
+      Serial.println("SET hh:mm temp - Schedule a temperature change");
+      Serial.println("TIME - Show current RTC time");
+      Serial.println("SEND <temp> - Send IR command for specified temperature");
+      Serial.println("LIST - List all available temperature commands");
+      Serial.println("HELP - Show this help message");
+    }
   }
 }
 
@@ -299,6 +329,7 @@ void setup() {
 
   setupPWM();
   Serial.println("System Ready");
+  Serial.println("Type 'HELP' for available commands");
 }
 
 void loop() {
